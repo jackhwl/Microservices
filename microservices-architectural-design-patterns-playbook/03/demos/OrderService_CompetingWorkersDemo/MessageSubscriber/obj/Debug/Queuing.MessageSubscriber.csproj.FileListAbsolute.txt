@@ -1,0 +1,9 @@
+C:\Users\ragub\Dropbox\Win Dropbox\MADPP\M02\EmailService\Queuing.MessageListener\bin\Debug\Queuing.MessageListener.dll
+C:\Users\ragub\Dropbox\Win Dropbox\MADPP\M02\EmailService\Queuing.MessageListener\bin\Debug\Queuing.MessageListener.pdb
+C:\Users\ragub\Dropbox\Win Dropbox\MADPP\M02\EmailService\Queuing.MessageListener\bin\Debug\Newtonsoft.Json.dll
+C:\Users\ragub\Dropbox\Win Dropbox\MADPP\M02\EmailService\Queuing.MessageListener\bin\Debug\RabbitMQ.Client.dll
+C:\Users\ragub\Dropbox\Win Dropbox\MADPP\M02\EmailService\Queuing.MessageListener\bin\Debug\Newtonsoft.Json.xml
+C:\Users\ragub\Dropbox\Win Dropbox\MADPP\M02\EmailService\Queuing.MessageListener\bin\Debug\RabbitMQ.Client.xml
+C:\Users\ragub\Dropbox\Win Dropbox\MADPP\M02\EmailService\Queuing.MessageListener\obj\Debug\Queuing.MessageListener.dll
+C:\Users\ragub\Dropbox\Win Dropbox\MADPP\M02\EmailService\Queuing.MessageListener\obj\Debug\Queuing.MessageListener.pdb
+C:\Users\ragub\Dropbox\Win Dropbox\MADPP\M02\EmailService\Queuing.MessageListener\obj\Debug\Queuing.MessageSubscriber.csprojResolveAssemblyReference.cache

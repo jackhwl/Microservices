@@ -1,0 +1,11 @@
+C:\Users\ragub\Dropbox\Win Dropbox\MADPP\M02\OrderService_FanoutPattern\OrderPaymentService.Business\bin\Debug\OrderPaymentService.Business.dll
+C:\Users\ragub\Dropbox\Win Dropbox\MADPP\M02\OrderService_FanoutPattern\OrderPaymentService.Business\bin\Debug\OrderPaymentService.Business.pdb
+C:\Users\ragub\Dropbox\Win Dropbox\MADPP\M02\OrderService_FanoutPattern\OrderPaymentService.Business\bin\Debug\MessageSubscriber.dll
+C:\Users\ragub\Dropbox\Win Dropbox\MADPP\M02\OrderService_FanoutPattern\OrderPaymentService.Business\bin\Debug\Newtonsoft.Json.dll
+C:\Users\ragub\Dropbox\Win Dropbox\MADPP\M02\OrderService_FanoutPattern\OrderPaymentService.Business\bin\Debug\RabbitMQ.Client.dll
+C:\Users\ragub\Dropbox\Win Dropbox\MADPP\M02\OrderService_FanoutPattern\OrderPaymentService.Business\bin\Debug\MessageSubscriber.pdb
+C:\Users\ragub\Dropbox\Win Dropbox\MADPP\M02\OrderService_FanoutPattern\OrderPaymentService.Business\bin\Debug\Newtonsoft.Json.xml
+C:\Users\ragub\Dropbox\Win Dropbox\MADPP\M02\OrderService_FanoutPattern\OrderPaymentService.Business\bin\Debug\RabbitMQ.Client.xml
+C:\Users\ragub\Dropbox\Win Dropbox\MADPP\M02\OrderService_FanoutPattern\OrderPaymentService.Business\obj\Debug\OrderPaymentService.Business.csprojResolveAssemblyReference.cache
+C:\Users\ragub\Dropbox\Win Dropbox\MADPP\M02\OrderService_FanoutPattern\OrderPaymentService.Business\obj\Debug\OrderPaymentService.Business.dll
+C:\Users\ragub\Dropbox\Win Dropbox\MADPP\M02\OrderService_FanoutPattern\OrderPaymentService.Business\obj\Debug\OrderPaymentService.Business.pdb

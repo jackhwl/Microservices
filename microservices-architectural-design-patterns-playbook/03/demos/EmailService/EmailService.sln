@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.9
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailService.Service", "EmailService\EmailService.Service.csproj", "{648E16EC-0F47-4DD8-B072-6B2402B07280}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageSubscriber", "MessageSubscriber\MessageSubscriber.csproj", "{0B5B435E-018D-4A43-A567-F4FB18EF393C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientQueueMessageSender", "ClientQueueMessageSender\ClientQueueMessageSender.csproj", "{58690676-9E39-4450-B943-7BDECCB5940C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailService.Business", "EmailService.Business\EmailService.Business.csproj", "{89EA6628-7276-4A9D-B006-3605ADD6BC9B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. MessageSubscriber", "3. MessageSubscriber", "{07B00CFB-1607-4FCB-92BB-0DB5A4B83996}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Business", "2. Business", "{81180B2F-7D4A-47A4-BD1B-4808A6FEDC68}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Application", "1. Application", "{4E29D9EF-73ED-4344-85AD-FB4983443DBA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test Apps", "Test Apps", "{2C6C30AE-89F3-400D-9B0A-AF3C22C11378}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{648E16EC-0F47-4DD8-B072-6B2402B07280}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{648E16EC-0F47-4DD8-B072-6B2402B07280}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{648E16EC-0F47-4DD8-B072-6B2402B07280}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{648E16EC-0F47-4DD8-B072-6B2402B07280}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B5B435E-018D-4A43-A567-F4FB18EF393C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B5B435E-018D-4A43-A567-F4FB18EF393C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B5B435E-018D-4A43-A567-F4FB18EF393C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B5B435E-018D-4A43-A567-F4FB18EF393C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58690676-9E39-4450-B943-7BDECCB5940C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58690676-9E39-4450-B943-7BDECCB5940C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58690676-9E39-4450-B943-7BDECCB5940C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58690676-9E39-4450-B943-7BDECCB5940C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89EA6628-7276-4A9D-B006-3605ADD6BC9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89EA6628-7276-4A9D-B006-3605ADD6BC9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89EA6628-7276-4A9D-B006-3605ADD6BC9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89EA6628-7276-4A9D-B006-3605ADD6BC9B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{648E16EC-0F47-4DD8-B072-6B2402B07280} = {4E29D9EF-73ED-4344-85AD-FB4983443DBA}
+		{0B5B435E-018D-4A43-A567-F4FB18EF393C} = {07B00CFB-1607-4FCB-92BB-0DB5A4B83996}
+		{58690676-9E39-4450-B943-7BDECCB5940C} = {2C6C30AE-89F3-400D-9B0A-AF3C22C11378}
+		{89EA6628-7276-4A9D-B006-3605ADD6BC9B} = {81180B2F-7D4A-47A4-BD1B-4808A6FEDC68}
+	EndGlobalSection
+EndGlobal

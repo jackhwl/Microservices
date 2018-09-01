@@ -188,7 +188,7 @@ ClientBin/
 *.dbproj.schemaview
 *.pfx
 *.publishsettings
-XcelerateAdminPortal/node_modules/
+Globoma/node_modules/
 XcelerateAdminPortal/bower_components/
 XcelerateAdminPortal/dist/
 XcelerateAdminPortal/Scripts/*.map

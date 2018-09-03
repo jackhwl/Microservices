@@ -17,6 +17,7 @@ namespace Globoma
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc();
             services.AddSingleton<IConferenceService, ConferenceMemoryService>();
             services.AddSingleton<IProposalService, ProposalMemoryService>();
         }
@@ -29,19 +30,29 @@ namespace Globoma
                 app.UseDeveloperExceptionPage();
             }
 
-            app.Use(async (context, next) =>
-            {
-                //await context.Response.WriteAsync("Hello World!");
-                logger.LogInformation("Before second");
-                await next();
-                logger.LogInformation("After second");
-            });
+            app.UseStatusCodePages();
 
-            app.Run(async (context) =>
+            app.UseStaticFiles();
+
+            app.UseMvc(routes =>
             {
-                logger.LogInformation("second");
-                await context.Response.WriteAsync("Second text!");
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Conference}/{action=Index}/{id?}");
             });
+            //app.Use(async (context, next) =>
+            //{
+            //    //await context.Response.WriteAsync("Hello World!");
+            //    logger.LogInformation("Before second");
+            //    await next();
+            //    logger.LogInformation("After second");
+            //});
+
+            //app.Run(async (context) =>
+            //{
+            //    logger.LogInformation("second");
+            //    await context.Response.WriteAsync("Second text!");
+            //});
         }
     }
 }

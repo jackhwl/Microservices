@@ -1,0 +1,10 @@
+﻿@model Shared.Models.ConferenceModel
+<tr>
+    <td>@Model.Name</td>
+    <td>@Model.Location</td>
+    <td>@Model.Start.ToString("ddd d MMM")</td>
+    <td>@Model.AttendeeTotal</td>
+    <td>
+        <a asp-controller="Proposal" asp-action="Index" asp-route-conferenceId="@Model.Id">Proposals</a>
+    </td>
+</tr>

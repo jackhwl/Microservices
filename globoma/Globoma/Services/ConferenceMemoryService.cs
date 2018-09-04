@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Shared.Models;
 
-namespace WebApp.Services
+namespace Globoma.Services
 {
     public class ConferenceMemoryService: IConferenceService
     {

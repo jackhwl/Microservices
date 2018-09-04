@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using WebApp.Services;
+using Globoma.Services;
 
 namespace Globoma
 {
@@ -25,8 +25,11 @@ namespace Globoma
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddSingleton<IConferenceService, ConferenceMemoryService>();
-            services.AddSingleton<IProposalService, ProposalMemoryService>();
+            //services.AddSingleton<IConferenceService, ConferenceApiService>();
+            services.AddSingleton<IProposalService, ProposalApiService>();
+            services.AddHttpClient("GlobomanticsApi", c =>
+                c.BaseAddress = new Uri("http://localhost:5000"));
+            services.AddHttpClient<IConferenceService, ConferenceApiService>();
 
             services.Configure<GlobomanticsOptions>(configuration.GetSection("Globomantics"));
         }

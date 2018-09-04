@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using Shared.Models;
 
-namespace Globoma.Services
-{
-    public class ProposalMemoryService: IProposalService
+namespace API.Repositories
+{  
+    public class ProposalMemoryRepo : IProposalRepo
     {
         private readonly List<ProposalModel> proposals = new List<ProposalModel>();
 
-        public ProposalMemoryService()
+        public ProposalMemoryRepo()
         {
             proposals.Add(new ProposalModel
             {
@@ -34,26 +33,29 @@ namespace Globoma.Services
                 Title = "ASP.NET Core TagHelpers"
             });
         }
-        public Task<IEnumerable<ProposalModel>> GetAll(int conferenceId)
+
+        public IEnumerable<ProposalModel> GetAllForConference(int conferenceId)
         {
-            return Task.Run(() => proposals.Where(p=>p.ConferenceId == conferenceId).AsEnumerable());
+            return proposals.Where(p => p.ConferenceId == conferenceId);
         }
 
-        public Task Add(ProposalModel model)
+        public ProposalModel Add(ProposalModel model)
         {
             model.Id = proposals.Max(p => p.Id) + 1;
             proposals.Add(model);
-            return Task.CompletedTask;
+            return model;
         }
 
-        public Task<ProposalModel> Approve(int proposalId)
+        public ProposalModel Approve(int proposalId)
         {
-            return Task.Run(() =>
-            {
-                var proposal = proposals.First(p => p.Id == proposalId);
-                proposal.Approved = true;
-                return proposal;
-            });
+            var proposal = proposals.First(p => p.Id == proposalId);
+            proposal.Approved = true;
+            return proposal;
+        }
+
+        public ProposalModel GetById(int id)
+        {
+            return proposals.Single(p => p.Id == id);
         }
     }
 }

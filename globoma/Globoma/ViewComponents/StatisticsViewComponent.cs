@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WebApp.Services;
+using Globoma.Services;
 
 namespace Globoma.ViewComponents
 {

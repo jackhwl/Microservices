@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Shared.Models;
-using WebApp.Services;
+using Globoma.Services;
 
 namespace Globoma.Controller
 {

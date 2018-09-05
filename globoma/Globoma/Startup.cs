@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -25,11 +26,12 @@ namespace Globoma
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            //services.AddSingleton<IConferenceService, ConferenceApiService>();
-            services.AddSingleton<IProposalService, ProposalApiService>();
-            services.AddHttpClient("GlobomanticsApi", c =>
-                c.BaseAddress = new Uri("http://localhost:5000"));
-            services.AddHttpClient<IConferenceService, ConferenceApiService>();
+            services.AddSingleton<IConferenceService, ConferenceMemoryService>();
+            services.AddSingleton<IProposalService, ProposalMemoryService>();
+            services.AddSingleton(x => new HttpClient { BaseAddress = new Uri("http://localhost:5000")});
+            //services.AddHttpClient("GlobomanticsApi", c =>
+            //    c.BaseAddress = new Uri("http://localhost:5000"));
+            //services.AddHttpClient<IConferenceService, ConferenceApiService>();
 
             services.Configure<GlobomanticsOptions>(configuration.GetSection("Globomantics"));
         }

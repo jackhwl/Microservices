@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+<h1>API test client</h1>
+<script>
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open("GET", "http://localhost:51705/api/proposal?conferenceId=1", true); // true for asynchronous 
+    xmlHttp.onreadystatechange = function () {
+        if (xmlHttp.readyState === 4 && xmlHttp.status === 200)
+            console.log(xmlHttp.responseText);
+    }
+    xmlHttp.send(null);
+</script>  
+
+</body>
+</html>

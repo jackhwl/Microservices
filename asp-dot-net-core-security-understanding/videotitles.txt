@@ -1,0 +1,6 @@
+2. Protecting Your Application Against Common Attacks
+applying SSL
+Http Strict Transport Security(HSTS)
+SQL Injection
+Cross Site Request Forgery(CSRF)
+Cross Site Scription(XSS)

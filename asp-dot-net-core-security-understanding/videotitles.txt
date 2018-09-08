@@ -4,3 +4,7 @@ Http Strict Transport Security(HSTS)
 SQL Injection
 Cross Site Request Forgery(CSRF)
 Cross Site Scription(XSS)
+Content Security Policy(CSP)
+Open Redirection Attack
+Click-jacking
+Same Origin Policy and CORS

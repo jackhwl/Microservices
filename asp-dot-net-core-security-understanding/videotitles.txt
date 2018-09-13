@@ -10,3 +10,7 @@ Click-jacking
 Same Origin Policy and CORS
 3. Understanding the Data Protection API and the Secret Manager
 4. Implementing Authentication with ASP.NET Core Identity
+5. Centralized Authentication with a Token Service 50%
+
+
+Building Your First API with ASP.NET Core

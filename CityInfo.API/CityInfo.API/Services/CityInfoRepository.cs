@@ -36,6 +36,12 @@ namespace CityInfo.API.Services
             return _context.Cities.FirstOrDefault(c => c.Id == cityId);
         }
 
+        public void AddPointOfInterestForCity(int cityId, PointOfInterest pointOfInterest)
+        {
+            var city = GetCity(cityId, false);
+            city.PointsOfInterest.Add(pointOfInterest);
+        }
+
         public PointOfInterest GetPointOfInterestForCity(int cityId, int pointOfInterestId)
         {
             return _context.PointsOfInterest.FirstOrDefault(p=>p.CityId==cityId && p.Id==pointOfInterestId);
@@ -44,6 +50,11 @@ namespace CityInfo.API.Services
         public IEnumerable<PointOfInterest> GetPointsOfInterestForCity(int cityId)
         {
             return _context.PointsOfInterest.Where(p => p.CityId == cityId).ToList();
+        }
+
+        public bool Save()
+        {
+            return _context.SaveChanges() >=0;
         }
     }
 }

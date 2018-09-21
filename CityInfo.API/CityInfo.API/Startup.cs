@@ -79,7 +79,12 @@ namespace CityInfo.API
 
             cityInfoContext.EnsureSeedDataForContext();
             //app.UseStatusCodePages();
-
+            AutoMapper.Mapper.Initialize(cfg =>
+            {
+                cfg.CreateMap<City, CityWithoutPointsOfInterestDto>();
+                cfg.CreateMap<City, CityDto>();
+                cfg.CreateMap<PointOfInterest, PointOfInterestDto>();
+            });
             app.UseMvc();
 
             //app.Run((context) => throw new Exception("Example exception test"));

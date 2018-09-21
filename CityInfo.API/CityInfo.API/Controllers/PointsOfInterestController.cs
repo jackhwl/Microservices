@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using CityInfo.API.Models;
 using CityInfo.API.Services;
 using Microsoft.AspNetCore.JsonPatch;
@@ -35,25 +36,9 @@ namespace CityInfo.API.Controllers
                     return NotFound();
                 }
                 var pointsOfInterestForCity = _cityInfoRepository.GetPointsOfInterestForCity(cityId);
-                var pointsOfInterestForCityResults = new List<PointOfInterestDto>();
-                foreach (var poi in pointsOfInterestForCity)
-                {
-                    pointsOfInterestForCityResults.Add(new PointOfInterestDto
-                    {
-                        Id = poi.Id,
-                        Name = poi.Name,
-                        Description = poi.Description
-                    });
-                }
-
+                var pointsOfInterestForCityResults =
+                    Mapper.Map<IEnumerable<PointOfInterestDto>>(pointsOfInterestForCity);
                 return Ok(pointsOfInterestForCityResults);
-                //var city = CitiesDataStore.Current.Cities.FirstOrDefault(c => c.Id == cityId);
-                //if (city == null)
-                //{
-                //    _logger.LogInformation($"City with id {cityId} wasn't found when accessing points of interest.");
-                //    return NotFound();
-                //}
-                //return Ok(city.PointsOfInterest);
             }
             catch (Exception ex)
             {
@@ -76,26 +61,10 @@ namespace CityInfo.API.Controllers
                 return NotFound();
             }
 
-            var pointOfInterestResult = new PointOfInterestDto
-            {
-                Id = pointOfInterest.Id,
-                Name = pointOfInterest.Name,
-                Description = pointOfInterest.Description
-            };
-
+            var pointOfInterestResult = Mapper.Map<PointOfInterestDto>(pointOfInterest);
             return Ok(pointOfInterestResult);
-            //var city = CitiesDataStore.Current.Cities.FirstOrDefault(c => c.Id == cityId);
-            //if (city == null)
-            //{
-            //    _logger.LogInformation($"City with id {cityId} wasn't found when accessing points of interest.");  
-            //    return NotFound();
-            //}
-
-            //var pointOfInterest = city.PointsOfInterest.FirstOrDefault(p => p.Id == id);
-            //if (pointOfInterest == null) return NotFound();
-
-            //return Ok(pointOfInterest);
         }
+
         [HttpPost("{cityid}/pointsofinterest")]
         public IActionResult CreatePointsOfInterest(int cityid, [FromBody] PointOfInterestForCreationDto pointOfInterest)
         {

@@ -42,6 +42,11 @@ namespace CityInfo.API.Services
             city.PointsOfInterest.Add(pointOfInterest);
         }
 
+        public void DeletePointOfInterest(PointOfInterest pointOfInterest)
+        {
+            _context.PointsOfInterest.Remove(pointOfInterest);
+        }
+
         public PointOfInterest GetPointOfInterestForCity(int cityId, int pointOfInterestId)
         {
             return _context.PointsOfInterest.FirstOrDefault(p=>p.CityId==cityId && p.Id==pointOfInterestId);

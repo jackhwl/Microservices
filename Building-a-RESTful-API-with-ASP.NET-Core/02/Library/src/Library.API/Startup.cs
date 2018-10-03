@@ -12,6 +12,7 @@ using Library.API.Services;
 using Library.API.Entities;
 using Library.API.Helpers;
 using Library.API.Models;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.EntityFrameworkCore;
 
@@ -50,7 +51,11 @@ namespace Library.API
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, 
             ILoggerFactory loggerFactory, LibraryContext libraryContext)
-        {           
+        {
+            loggerFactory.AddConsole();
+            loggerFactory.AddDebug(LogLevel.Information);
+
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -61,6 +66,13 @@ namespace Library.API
                 {
                     appBuilder.Run(async context =>
                     {
+                        var excpetionHandlerFeature = context.Features.Get<IExceptionHandlerFeature>();
+                        if (excpetionHandlerFeature != null)
+                        {
+                            var logger = loggerFactory.CreateLogger("Global exception logger");
+                            logger.LogError(500, excpetionHandlerFeature.Error, excpetionHandlerFeature.Error.Message);
+                        }
+
                         context.Response.StatusCode = 500;
                         await context.Response.WriteAsync("An unexpected fault happened. Try again later.");
                     });

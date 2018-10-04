@@ -22,9 +22,11 @@ namespace Library.API.Controllers
         }
 
         [HttpGet()]
-        public IActionResult GetAuthors()
+        //public IActionResult GetAuthors([FromQuery(Name="page")] int pageNumber = 1, [FromQuery] int pageSize = 10)
+        public IActionResult GetAuthors(AuthorsResourceParameters authorsResourceParameters)
         {
-            var authorsFromRepo = _libraryRepository.GetAuthors();
+            //pageSize = (pageSize > maxAuthorPageSize) ? maxAuthorPageSize : pageSize;
+            var authorsFromRepo = _libraryRepository.GetAuthors(authorsResourceParameters);
             var authors = Mapper.Map<IEnumerable<AuthorDto>>(authorsFromRepo);
                 
             return Ok(authors);

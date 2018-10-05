@@ -17,11 +17,13 @@ namespace Library.API.Controllers
     {
         private ILibraryRepository _libraryRepository;
         private IUrlHelper _urlHelper;
+        private IPropertyMappingService _propertyMappingService;
 
-        public AuthorsController(ILibraryRepository libraryRepository, IUrlHelper urlHelper)
+        public AuthorsController(ILibraryRepository libraryRepository, IUrlHelper urlHelper, IPropertyMappingService propertyMappingService)
         {
             _libraryRepository = libraryRepository;
             _urlHelper = urlHelper;
+            _propertyMappingService = propertyMappingService;
         }
 
         [HttpGet(Name = "GetAuthors")]
@@ -29,6 +31,9 @@ namespace Library.API.Controllers
         public IActionResult GetAuthors(AuthorsResourceParameters authorsResourceParameters)
         {
             //pageSize = (pageSize > maxAuthorPageSize) ? maxAuthorPageSize : pageSize;
+            if (!_propertyMappingService.ValidMappingExistsFor<AuthorDto, Author>(authorsResourceParameters.OrderBy))
+                return BadRequest();
+
             var authorsFromRepo = _libraryRepository.GetAuthors(authorsResourceParameters);
             var previousPageLink = authorsFromRepo.HasPrevious
                 ? CreateAuthorsResourceUri(authorsResourceParameters, ResourceUriType.PreviousPage)

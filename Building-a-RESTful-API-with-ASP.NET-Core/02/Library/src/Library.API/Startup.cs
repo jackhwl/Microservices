@@ -42,6 +42,13 @@ namespace Library.API
                 setupAction.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter());
                 setupAction.InputFormatters.Add(new XmlDataContractSerializerInputFormatter());
 
+                var jsonInputFormatter = setupAction.InputFormatters.OfType<JsonInputFormatter>().FirstOrDefault();
+                if (jsonInputFormatter != null)
+                {
+                    jsonInputFormatter.SupportedMediaTypes.Add("application/vnd.marvin.author.full+json");
+                    jsonInputFormatter.SupportedMediaTypes.Add("application/vnd.marvin.authorwithdateofdeath.full+json");
+                }
+
                 var jsonOutputFormatter = setupAction.OutputFormatters.OfType<JsonOutputFormatter>().FirstOrDefault();
                 if (jsonOutputFormatter != null)
                 {
@@ -105,11 +112,12 @@ namespace Library.API
                     .ForMember(dest => dest.Name, opt => opt.MapFrom(
                         src=> $"{src.FirstName} {src.LastName}"))
                     .ForMember(dest => dest.Age, opt => opt.MapFrom(
-                        src => src.DateOfBirth.GetCurrentAge()));
+                        src => src.DateOfBirth.GetCurrentAge(src.DateOfDeath)));
 
                 cfg.CreateMap<Book, BookDto>();
 
                 cfg.CreateMap<AuthorForCreationDto, Author>();
+                cfg.CreateMap<AuthorForCreationWithDateOfDeathDto, Author>();
 
                 cfg.CreateMap<BookForCreationDto, Book>();
 
@@ -117,7 +125,7 @@ namespace Library.API
 
                 cfg.CreateMap<Book, BookForUpdateDto>();
             });
-            libraryContext.EnsureSeedDataForContext();
+            //libraryContext.EnsureSeedDataForContext();
 
             app.UseMvc(); 
         }

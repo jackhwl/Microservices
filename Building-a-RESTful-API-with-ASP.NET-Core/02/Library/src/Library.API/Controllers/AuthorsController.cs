@@ -29,6 +29,7 @@ namespace Library.API.Controllers
         }
 
         [HttpGet(Name = "GetAuthors")]
+        [HttpHead]
         //public IActionResult GetAuthors([FromQuery(Name="page")] int pageNumber = 1, [FromQuery] int pageSize = 10)
         public IActionResult GetAuthors(AuthorsResourceParameters authorsResourceParameters, [FromHeader(Name ="Accept")] string mediaType)
         {
@@ -266,3 +267,4 @@ namespace Library.API.Controllers
         }
     }
 }
+

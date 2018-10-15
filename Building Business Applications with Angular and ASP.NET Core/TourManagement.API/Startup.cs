@@ -89,6 +89,8 @@ namespace TourManagement.API
             {
                 config.CreateMap<Entities.Tour, Dtos.Tour>()
                     .ForMember(d => d.Band, o => o.MapFrom(s => s.Band.Name));
+                config.CreateMap<Entities.Tour, Dtos.TourWithEstimatedProfits>()
+                    .ForMember(d => d.Band, o => o.MapFrom(s => s.Band.Name));
                 config.CreateMap<Entities.Band, Dtos.Band>();
                 config.CreateMap<Entities.Manager, Dtos.Manager>();
                 config.CreateMap<Entities.Show, Dtos.Show>(); 

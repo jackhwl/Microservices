@@ -6,6 +6,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 
 import { Tour } from './tour.model';
+import { TourWithEstimatedProfits } from './tour-with-estimated-profits.model';
 import { BaseService } from '../../shared/base.service';
 
 @Injectable()
@@ -21,5 +22,10 @@ export class TourService extends BaseService {
 
     getTour(tourId: string): Observable<Tour> {
         return this.http.get<Tour>(`${this.apiUrl}/tours/${tourId}`);
+    }
+
+    getTourWithEstimatedProfits(tourId: string): Observable<TourWithEstimatedProfits> {
+        return this.http.get<TourWithEstimatedProfits>(`${this.apiUrl}/tours/${tourId}`,
+            { headers: {'Accept': 'application/vnd.marvin.tourwithestimatedprofits+json'} });
     }
 }

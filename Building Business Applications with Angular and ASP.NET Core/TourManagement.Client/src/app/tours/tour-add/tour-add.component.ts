@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { MasterDataService } from '../../shared/master-data.service';
 import { TourService } from '../shared/tour.service';
 import { Router } from '@angular/router';
+import { Manager } from '../../shared/manager.model';
 
 @Component({
   selector: 'app-tour-add',
@@ -15,6 +16,8 @@ export class TourAddComponent implements OnInit {
 
   public tourForm: FormGroup;
   bands: Band[];
+  managers: Manager[];
+  private isAdmin: boolean = true;
 
   constructor(private masterDataService: MasterDataService,
     private tourService: TourService,
@@ -26,6 +29,7 @@ export class TourAddComponent implements OnInit {
     // define the tourForm (with empty default values)
     this.tourForm = this.formBuilder.group({
       band: [''],
+      manager: [''],
       title: [''],
       description: [''],
       startDate: [],
@@ -37,11 +41,36 @@ export class TourAddComponent implements OnInit {
       .subscribe(bands => {
         this.bands = bands;
       });    
+    
+    if (this.isAdmin) {
+      // get managers from master data service
+      this.masterDataService.getManagers()
+      .subscribe(managers => {
+        this.managers = managers;
+      });    
+    }
   }
 
   addTour(): void {
     if (this.tourForm.dirty) {
-        // TODO
+      // assign value
+      if (this.isAdmin) {
+        // create TourWithManagerForCreation from form model
+        let tour = automapper.map('TourFormModel', 'TourWithManagerForCreation', this.tourForm.value);
+
+        this.tourService.addTourWithManager(tour)
+          .subscribe( () => {
+            this.router.navigateByUrl('/tours');
+        });    
+      } else {
+        // create TourForCreation from form model
+        let tour = automapper.map('TourFormModel', 'TourForCreation', this.tourForm.value);
+
+        this.tourService.addTour(tour)
+          .subscribe( () => {
+            this.router.navigateByUrl('/tours');
+        });
+      }
     }
   }
 

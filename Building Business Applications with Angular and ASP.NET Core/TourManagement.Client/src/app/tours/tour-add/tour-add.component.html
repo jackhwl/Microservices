@@ -17,6 +17,17 @@
           </div>
         </div>
 
+        <div class="form-group" *ngIf='(isAdmin)'>
+          <label class="col-md-2 control-label" for="managerId">Manager</label>
+          <div class="col-md-8">
+            <select class="form-control" formControlName="manager" id="managerId">
+              <option *ngFor="let manager of managers" [ngValue]="manager.managerId">
+                {{manager.name}}
+              </option>
+            </select>
+          </div>
+        </div>
+
         <div class="form-group">
           <label class="col-md-2 control-label" for="titleId">Title</label>
           <div class="col-md-8">

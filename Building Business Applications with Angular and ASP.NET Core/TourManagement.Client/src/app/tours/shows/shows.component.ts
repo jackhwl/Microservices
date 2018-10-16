@@ -11,31 +11,33 @@ import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
   styleUrls: ['./shows.component.css']
 })
 
-export class ShowsComponent implements OnInit, OnDestroy{
+export class ShowsComponent implements OnInit{
  
-  private sub: Subscription;
-  private tourId: string;
-  shows: Show[];
+  @Input() shows: Show[];
 
-  constructor(private showService: ShowService,
-     private route: ActivatedRoute) { }
+  // private sub: Subscription;
+  // private tourId: string;
+  // shows: Show[];
+
+  // constructor(private showService: ShowService,
+  //    private route: ActivatedRoute) { }
 
  ngOnInit() {     
-      // get route data (tourId)
-      this.sub = this.route.params.subscribe(
-        params => {
-          this.tourId = params['tourId'];
+      // // get route data (tourId)
+      // this.sub = this.route.params.subscribe(
+      //   params => {
+      //     this.tourId = params['tourId'];
   
-          // load tour
-          this.showService.getShows(this.tourId)
-            .subscribe(shows => {
-              this.shows = shows;  
-            });
-        }
-      );
+      //     // load tour
+      //     this.showService.getShows(this.tourId)
+      //       .subscribe(shows => {
+      //         this.shows = shows;  
+      //       });
+      //   }
+      // );
     }
 
-    ngOnDestroy(): void {
-      this.sub.unsubscribe();
-    }
+    // ngOnDestroy(): void {
+    //   this.sub.unsubscribe();
+    // }
 }

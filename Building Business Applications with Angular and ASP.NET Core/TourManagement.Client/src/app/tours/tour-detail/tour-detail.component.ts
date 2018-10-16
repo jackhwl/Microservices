@@ -32,13 +32,13 @@ export class TourDetailComponent implements OnInit, OnDestroy {
 
         if (this.isAdmin) {
           // get tour with estimated profits field
-          this.tourService.getTourWithEstimatedProfits(this.tourId)
+          this.tourService.getTourWithEstimatedProfitsAndShows(this.tourId)
           .subscribe(tour => {
             this.tour = tour;  
           });
         } else {
           // get tour
-          this.tourService.getTour(this.tourId)
+          this.tourService.getTourWithShows(this.tourId)
           .subscribe(tour => {
             this.tour = tour;  
           });

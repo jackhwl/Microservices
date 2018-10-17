@@ -22,6 +22,7 @@ import { ErrorLoggerService } from './shared/error-logger.service';
 import { HandleHttpErrorInterceptor } from './shared/handle-http-error-interceptor';
 import { WriteOutJsonInterceptor } from './shared/write-out-json-interceptor';
 import { EnsureAcceptHeaderInterceptor } from './shared/ensure-accept-header-interceptor';
+import { ShowSingleComponent } from './tours/shows/show-single/show-single.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { EnsureAcceptHeaderInterceptor } from './shared/ensure-accept-header-int
     TourAddComponent,
     ToursComponent,
     TourUpdateComponent,
-    ShowAddComponent
+    ShowAddComponent,
+    ShowSingleComponent
   ],
   imports: [
     BrowserModule,

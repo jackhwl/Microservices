@@ -12,6 +12,8 @@ import { TourForCreation } from './tour-for-creation.model';
 import { TourWithManagerForCreation } from './tour-with-manager-for-creation.model';
 import { TourWithShows } from './tour-with-shows.model';
 import { TourWithEstimatedProfitsAndShows } from './tour-with-estimated-profits-and-shows';
+import { TourWithShowsForCreation } from './tour-with-shows-for-creation';
+import { TourWithManagerAndShowsForCreation } from './tour-with-manager-and-shows-for-creation';
 
 @Injectable()
 export class TourService extends BaseService {
@@ -50,5 +52,15 @@ export class TourService extends BaseService {
     addTourWithManager(tourToAdd: TourWithManagerForCreation): Observable<Tour> {
         return this.http.post<Tour>(`${this.apiUrl}/tours`, tourToAdd,
             { headers: {'Content-Type': 'application/vnd.marvin.tourwithmanagerforcreation+json'} });
+    }
+
+    addTourWithShows(tourToAdd: TourWithShowsForCreation ): Observable<Tour> {
+        return this.http.post<Tour>(`${this.apiUrl}/tours`, tourToAdd,
+            { headers: {'Content-Type': 'application/vnd.marvin.tourwithshowsforcreation+json'} });
+    }
+
+    addTourWithManagerAndShows(tourToAdd: TourWithManagerAndShowsForCreation): Observable<Tour> {
+        return this.http.post<Tour>(`${this.apiUrl}/tours`, tourToAdd,
+            { headers: {'Content-Type': 'application/vnd.marvin.tourwithmanagerandshowsforcreation+json'} });
     }
 }

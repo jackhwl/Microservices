@@ -40,6 +40,8 @@ namespace TourManagement.API
                 {
                     jsonInputFormatter.SupportedMediaTypes.Add("application/vnd.marvin.tourforcreation+json");
                     jsonInputFormatter.SupportedMediaTypes.Add("application/vnd.marvin.tourwithmanagerforcreation+json");
+                    jsonInputFormatter.SupportedMediaTypes.Add("application/vnd.marvin.tourwithshowsforcreation+json");
+                    jsonInputFormatter.SupportedMediaTypes.Add("application/vnd.marvin.tourwithmanagerandshowsforcreation+json");
                 }
             })
             .AddJsonOptions(options =>
@@ -109,6 +111,10 @@ namespace TourManagement.API
                     .ForMember(d => d.Band, o => o.MapFrom(s => s.Band.Name));
                 config.CreateMap<Entities.Tour, Dtos.TourWithEstimatedProfitsAndShows>()
                     .ForMember(d => d.Band, o => o.MapFrom(s => s.Band.Name));
+
+                config.CreateMap<Dtos.TourWithShowsForCreation, Entities.Tour>(); 
+                config.CreateMap<Dtos.TourWithManagerAndShowsForCreation, Entities.Tour>(); 
+                config.CreateMap<Dtos.ShowForCreation, Entities.Show>(); 
             });
 
             // Enable CORS

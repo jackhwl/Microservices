@@ -42,6 +42,7 @@ namespace TourManagement.API
                     jsonInputFormatter.SupportedMediaTypes.Add("application/vnd.marvin.tourwithmanagerforcreation+json");
                     jsonInputFormatter.SupportedMediaTypes.Add("application/vnd.marvin.tourwithshowsforcreation+json");
                     jsonInputFormatter.SupportedMediaTypes.Add("application/vnd.marvin.tourwithmanagerandshowsforcreation+json");
+                    jsonInputFormatter.SupportedMediaTypes.Add("application/vnd.marvin.showcollectionforcreation+json");
                 }
             })
             .AddJsonOptions(options =>

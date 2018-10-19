@@ -9,6 +9,7 @@ import { DatePipe } from '@angular/common'
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { TourForUpdate } from '../shared/tour-for-update.model';
 import { compare } from 'fast-json-patch';
+import { CustomValidators } from '../../shared/custom-validators';
 
 @Component({
   selector: 'app-tour-update',
@@ -36,7 +37,7 @@ export class TourUpdateComponent implements OnInit, OnDestroy {
       description: [''],
       startDate: [],
       endDate: []
-    });
+    }, { validator: CustomValidators.StartDateBeforeEndDateValidator });
  
     // get route data (tourId)
     this.sub = this.route.params.subscribe(

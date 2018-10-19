@@ -46,17 +46,23 @@
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" [ngClass]="{'has-error': tourForm.errors?.startDateBeforeEndDate && (tourForm.controls.startDate.dirty || tourForm.controls.endDate.dirty)}">
           <label class="col-md-2 control-label" for="startDateId">Starts on</label>
           <div class="col-md-8">
             <input class="form-control" id="startDateId" type="date" formControlName="startDate" />
+            <div *ngIf="tourForm.dirty" class="has-error">
+              <div *ngIf="tourForm.errors?.startDateBeforeEndDate">A tour must start before it can end.</div>
+            </div>
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" [ngClass]="{'has-error': tourForm.errors?.startDateBeforeEndDate && (tourForm.controls.startDate.dirty || tourForm.controls.endDate.dirty)}">
           <label class="col-md-2 control-label" for="endDateId">Ends on</label>
           <div class="col-md-8">
             <input class="form-control" id="endDateId" type="date" formControlName="endDate" />
+            <div *ngIf="tourForm.dirty" class="has-error">
+              <div *ngIf="tourForm.errors?.startDateBeforeEndDate">A tour must start before it can end.</div>
+            </div>
           </div>
         </div>
 

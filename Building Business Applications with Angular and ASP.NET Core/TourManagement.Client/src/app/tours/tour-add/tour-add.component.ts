@@ -7,6 +7,7 @@ import { TourService } from '../shared/tour.service';
 import { Router } from '@angular/router';
 import { Manager } from '../../shared/manager.model';
 import { ShowSingleComponent } from '../shows/show-single/show-single.component';
+import { CustomValidators } from '../../shared/custom-validators';
 
 @Component({
   selector: 'app-tour-add',
@@ -36,7 +37,7 @@ export class TourAddComponent implements OnInit {
       startDate: [],
       endDate: [],
       shows: this.formBuilder.array([])
-    });
+    }, { validator: CustomValidators.StartDateBeforeEndDateValidator });
 
     // get bands from master data service
     this.masterDataService.getBands()

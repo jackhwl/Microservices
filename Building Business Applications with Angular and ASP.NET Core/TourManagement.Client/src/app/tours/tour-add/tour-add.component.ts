@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Band } from '../../shared/band.model';
-import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
+import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
 import { MasterDataService } from '../../shared/master-data.service';
 import { TourService } from '../shared/tour.service';
@@ -31,7 +31,7 @@ export class TourAddComponent implements OnInit {
     this.tourForm = this.formBuilder.group({
       band: [''],
       manager: [''],
-      title: [''],
+      title: ['', [Validators.required, Validators.maxLength(200)]],
       description: [''],
       startDate: [],
       endDate: [],
@@ -60,7 +60,7 @@ export class TourAddComponent implements OnInit {
   }
 
   addTour(): void {
-    if (this.tourForm.dirty) {
+    if (this.tourForm.dirty && this.tourForm.valid) {
       // assign value
       if (this.isAdmin) {
         if (this.tourForm.value.shows.length){

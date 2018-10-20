@@ -61,7 +61,7 @@ export class TourAddComponent implements OnInit {
   }
 
   addTour(): void {
-    if (this.tourForm.dirty && this.tourForm.valid) {
+    if (this.tourForm.dirty) {
       // assign value
       if (this.isAdmin) {
         if (this.tourForm.value.shows.length){

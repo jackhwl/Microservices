@@ -89,17 +89,6 @@ namespace TourManagement.API.Controllers
         [RequestHeaderMatchesMediaType("Content-Type", new [] {"application/json", "application/vnd.marvin.tourforcreation+json"})]
         public async Task<IActionResult> AddTour([FromBody] TourForCreation tour)
         {
-            if (tour == null)
-            {
-                return BadRequest();
-            }
-
-            // validation of the DTO happens here
-            if (!(tour.StartDate < tour.EndDate))
-            {
-                ModelState.AddModelError(nameof(tour), "A tour must start before it can end.");
-            }
-
             return await AddSpecificTour(tour);
         }  
 
@@ -107,13 +96,6 @@ namespace TourManagement.API.Controllers
         [RequestHeaderMatchesMediaType("Content-Type", new [] {"application/vnd.marvin.tourwithmanagerforcreation+json"})]
         public async Task<IActionResult> AddTourWithManager([FromBody] TourWithManagerForCreation tour)
         {
-            if (tour == null)
-            {
-                return BadRequest();
-            }
-
-            // validation of the DTO happens here
-
             return await AddSpecificTour(tour);
         }
 
@@ -121,13 +103,6 @@ namespace TourManagement.API.Controllers
         [RequestHeaderMatchesMediaType("Content-Type", new [] {"application/vnd.marvin.tourwithshowsforcreation+json"})]
         public async Task<IActionResult> AddTourWithShows([FromBody] TourWithShowsForCreation tour)
         {
-            if (tour == null)
-            {
-                return BadRequest();
-            }
-
-            // validation of the DTO happens here
-
             return await AddSpecificTour(tour);
         }
 
@@ -135,13 +110,6 @@ namespace TourManagement.API.Controllers
         [RequestHeaderMatchesMediaType("Content-Type", new [] {"application/vnd.marvin.tourwithmanagerandshowsforcreation+json"})]
         public async Task<IActionResult> AddTourWithManagerAndShows([FromBody] TourWithManagerAndShowsForCreation tour)
         {
-            if (tour == null)
-            {
-                return BadRequest();
-            }
-
-            // validation of the DTO happens here
-
             return await AddSpecificTour(tour);
         }
 
@@ -161,6 +129,11 @@ namespace TourManagement.API.Controllers
 
         private async Task<IActionResult> AddSpecificTour<T>(T tour) where T : class
         {
+            if (tour == null)
+            {
+                return BadRequest();
+            }
+
             if (!ModelState.IsValid)
             {
                 return BadRequest();

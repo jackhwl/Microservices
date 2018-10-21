@@ -25,10 +25,13 @@ export class HandleHttpErrorInterceptor implements HttpInterceptor {
                     this.globalErrorHandler.handleError(errorToLog);
                 }
 
-                return Observable.of(new HttpResponse());
-                
-            }
-            )
+                if (error.status === 422) {
+                    // throw the error body
+                    return Observable.throw(error.error);
+                } else {
+                    return Observable.of(new HttpResponse());
+                }
+            })
     }
 }
 

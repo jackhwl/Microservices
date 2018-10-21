@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { Manager } from '../../shared/manager.model';
 import { ShowSingleComponent } from '../shows/show-single/show-single.component';
 import { CustomValidators } from '../../shared/custom-validators';
+import { ValidationErrorHandler } from '../../shared/validation-error-handler';
 
 @Component({
   selector: 'app-tour-add',
@@ -32,12 +33,12 @@ export class TourAddComponent implements OnInit {
     this.tourForm = this.formBuilder.group({
       band: [''],
       manager: [''],
-      title: ['', [Validators.required, Validators.maxLength(200)]],
+      title: [''], //, [Validators.required, Validators.maxLength(200)]],
       description: [''],
       startDate: [],
       endDate: [],
       shows: this.formBuilder.array([])
-    }, { validator: CustomValidators.StartDateBeforeEndDateValidator });
+    }); //, { validator: CustomValidators.StartDateBeforeEndDateValidator });
 
     // get bands from master data service
     this.masterDataService.getBands()
@@ -61,7 +62,7 @@ export class TourAddComponent implements OnInit {
   }
 
   addTour(): void {
-    if (this.tourForm.dirty) {
+    if (this.tourForm.dirty && this.tourForm.valid) {
       // assign value
       if (this.isAdmin) {
         if (this.tourForm.value.shows.length){
@@ -71,7 +72,7 @@ export class TourAddComponent implements OnInit {
           this.tourService.addTourWithManagerAndShows(tour)
             .subscribe( () => {
               this.router.navigateByUrl('/tours');
-          });    
+          }, (validationResult) => { ValidationErrorHandler.handleValidationErrors(this.tourForm, validationResult); });    
         } else {
           // create TourWithManagerForCreation from form model
           let tour = automapper.map('TourFormModel', 'TourWithManagerForCreation', this.tourForm.value);
@@ -79,7 +80,7 @@ export class TourAddComponent implements OnInit {
           this.tourService.addTourWithManager(tour)
             .subscribe( () => {
               this.router.navigateByUrl('/tours');
-          });    
+          }, (validationResult) => { ValidationErrorHandler.handleValidationErrors(this.tourForm, validationResult); });    
         }
       } else {
         if (this.tourForm.value.shows.length){
@@ -89,7 +90,7 @@ export class TourAddComponent implements OnInit {
           this.tourService.addTourWithShows(tour)
             .subscribe( () => {
               this.router.navigateByUrl('/tours');
-          });
+          }, (validationResult) => { ValidationErrorHandler.handleValidationErrors(this.tourForm, validationResult); });
         } else {
           // create TourForCreation from form model
           let tour = automapper.map('TourFormModel', 'TourForCreation', this.tourForm.value);
@@ -97,7 +98,7 @@ export class TourAddComponent implements OnInit {
           this.tourService.addTour(tour)
             .subscribe( () => {
               this.router.navigateByUrl('/tours');
-          });
+          }, (validationResult) => { ValidationErrorHandler.handleValidationErrors(this.tourForm, validationResult); });
         }
       }
     }

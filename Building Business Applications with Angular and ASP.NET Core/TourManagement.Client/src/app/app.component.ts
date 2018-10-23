@@ -12,12 +12,4 @@ export class AppComponent {
 
   constructor(private openIdConnectService: OpenIdConnectService) {  }
 
-  ngOnInit() {
-    var path = window.location.pathname;
-    if (path != "/signin-oidc") {
-      if (!this.openIdConnectService.userAvailable) {
-        this.openIdConnectService.triggerSignIn();
-      }
-    }
-  }
 }

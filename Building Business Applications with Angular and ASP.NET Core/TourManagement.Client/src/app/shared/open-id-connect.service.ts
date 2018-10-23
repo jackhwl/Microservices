@@ -23,6 +23,13 @@ export class OpenIdConnectService {
       }
       this.currentUser = user;
     });
+
+    this.userManager.events.addUserUnloaded((e) => {
+      if (!environment.production){
+        console.log('User unloaded.');
+      }
+      this.currentUser = null;
+    });
   }
 
   triggerSignIn(){
@@ -40,4 +47,13 @@ export class OpenIdConnectService {
       }
     });
   }
+
+  triggerSignOut(){
+    this.userManager.signoutRedirect().then(function (resp) {
+      if (!environment.production) {
+        console.log('Redirection to sign out triggered.');
+      }
+    });
+  }
+
 }

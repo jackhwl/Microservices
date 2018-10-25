@@ -69,7 +69,8 @@ namespace Marvin.IDP
                     AllowAccessTokensViaBrowser = true,
                     RedirectUris =new List<string>
                     {
-                        "https://localhost:4200/signin-oidc"
+                        "https://localhost:4200/signin-oidc",
+                        "https://localhost:4200/redirect-silentrenew"
                     },
                     AccessTokenLifetime = 180,
                     PostLogoutRedirectUris = new[]{

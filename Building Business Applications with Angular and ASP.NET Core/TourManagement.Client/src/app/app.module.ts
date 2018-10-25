@@ -27,6 +27,7 @@ import { OpenIdConnectService } from './shared/open-id-connect.service';
 import { SigninOidcComponent } from './signin-oidc/signin-oidc.component';
 import { RequireAuthenticatedUserRouteGuardService } from './shared/require-authenticated-user-route-guard.service';
 import { AddAuthorizationHeaderInterceptor } from './shared/add-authorization-header-interceptor';
+import { RedirectSilentRenewComponent } from './redirect-silent-renew/redirect-silent-renew.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { AddAuthorizationHeaderInterceptor } from './shared/add-authorization-he
     TourUpdateComponent,
     ShowAddComponent,
     ShowSingleComponent,
-    SigninOidcComponent
+    SigninOidcComponent,
+    RedirectSilentRenewComponent
   ],
   imports: [
     BrowserModule,

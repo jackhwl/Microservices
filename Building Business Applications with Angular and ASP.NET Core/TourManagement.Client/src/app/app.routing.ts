@@ -8,6 +8,7 @@ import { NgModule } from '@angular/core';
 import { ShowAddComponent } from './tours/shows/index';
 import { SigninOidcComponent } from './signin-oidc/signin-oidc.component';
 import { RequireAuthenticatedUserRouteGuardService } from './shared/require-authenticated-user-route-guard.service';
+import { RedirectSilentRenewComponent } from './redirect-silent-renew/redirect-silent-renew.component';
 
 const routes: Routes = [
     // redirect root to the dasbhoard route
@@ -18,7 +19,8 @@ const routes: Routes = [
     { path: 'tour-update/:tourId', component: TourUpdateComponent, canActivate: [RequireAuthenticatedUserRouteGuardService] },  
     { path: 'tour-add', component: TourAddComponent, canActivate: [RequireAuthenticatedUserRouteGuardService] },  
     { path: 'tours/:tourId/show-add', component: ShowAddComponent, canActivate: [RequireAuthenticatedUserRouteGuardService] },
-    { path: 'signin-oidc', component: SigninOidcComponent } 
+    { path: 'signin-oidc', component: SigninOidcComponent },
+    { path: 'redirect-silentrenew', component: RedirectSilentRenewComponent } 
   //  { path: '**', redirectTo: 'tours' },
 ];
 

@@ -3,12 +3,14 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using TourManagement.API.Dtos;
 using TourManagement.API.Services;
 
 namespace TourManagement.API.Controllers
 {
     [Route("api/tours/{tourId}/shows")]
+    [Authorize]
     public class ShowsController : Controller
     {
         private readonly ITourManagementRepository _tourManagementRepository;

@@ -2,12 +2,14 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using TourManagement.API.Dtos;
 using TourManagement.API.Services;
 
 namespace TourManagement.API.Controllers
 {
     [Route("api/managers")]
+    [Authorize]
     public class ManagersController : Controller
     {
         private readonly ITourManagementRepository _tourManagementRepository;

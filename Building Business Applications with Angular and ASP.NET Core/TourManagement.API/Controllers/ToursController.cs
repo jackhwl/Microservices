@@ -97,6 +97,7 @@ namespace TourManagement.API.Controllers
         }
 
         [HttpGet("{tourId}")]
+        [Authorize(Policy = "UserMustBeAdministrator")]
         [RequestHeaderMatchesMediaType("Accept", new [] {"application/vnd.marvin.tourwithestimatedprofitsandshows+json"})]
         public async Task<IActionResult> GetTourWithEstimatedProfitsAndShows(Guid tourId)
         {

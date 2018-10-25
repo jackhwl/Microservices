@@ -6,6 +6,7 @@ import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 import { MasterDataService } from '../../shared/master-data.service';
 import { Subscription } from 'rxjs/Subscription';
 import { Show } from '../shows/shared/show.model';
+import { OpenIdConnectService } from '../../shared/open-id-connect.service';
 
 @Component({
   selector: 'app-tour-detail',
@@ -17,11 +18,12 @@ export class TourDetailComponent implements OnInit, OnDestroy {
   private tour: any;
   private tourId: string;
   private sub: Subscription;
-  private isAdmin: boolean = false;
+  private isAdmin: boolean = (this.openIdConnectService.user.profile.role === "Administrator");
 
   constructor(private masterDataService: MasterDataService,
     private tourService: TourService,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private openIdConnectService: OpenIdConnectService) {
   }
 
   ngOnInit() {
